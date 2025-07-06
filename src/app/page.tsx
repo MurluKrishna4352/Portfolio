@@ -96,7 +96,7 @@ function BambooTree(props: any) {
 function NeuronFireflies() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const NEURON_COUNT = 32;
-  const LINK_DISTANCE = 90; // decreased for less connectivity
+  const LINK_DISTANCE =100; // decreased for less connectivity
   const NEURON_RADIUS = 4;
 
   useEffect(() => {
@@ -139,7 +139,7 @@ function NeuronFireflies() {
           if (dist < LINK_DISTANCE) {
             ctx.save?.();
             ctx.globalAlpha = 0.18 * (1 - dist / LINK_DISTANCE);
-            ctx.strokeStyle = '#4e7ca1'; // water color
+            ctx.strokeStyle = '#00F0FF'; // water color
             ctx.lineWidth = 1.2;
             ctx.beginPath();
             ctx.moveTo(neurons[i].x, neurons[i].y);
@@ -168,7 +168,7 @@ function NeuronFireflies() {
         ctx.arc(n.x, n.y, NEURON_RADIUS + 1.5 * Math.abs(Math.sin(n.phase)), 0, Math.PI * 2);
         ctx.fillStyle = '#4e7ca1'; // water blue
         ctx.shadowColor = '#4e7ca1';
-        ctx.shadowBlur = 8;
+        ctx.shadowBlur = 9;
         ctx.globalAlpha = 0.95;
         ctx.fill();
         ctx.globalAlpha = 1;
@@ -242,7 +242,7 @@ function FlowingRiver() {
     let t = 0;
     let frame: number;
     function animate() {
-      t += 0.008;
+      t += 0.009;
       const amplitude = 16;
       const baseY = 170;
       let d = `M0,${baseY}`;

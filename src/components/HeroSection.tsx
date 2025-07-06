@@ -47,7 +47,13 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
         >
-          <a href="#projects" className="px-6 py-2 rounded font-semibold shadow transition-colors border-2 border-[#3a5c3a] bg-[#3a5c3a] text-white hover:bg-[#2d4630] hover:border-[#2d4630]">View Projects</a>
+          <a
+            href="/projects"
+            className="px-6 py-2 rounded font-semibold shadow transition-colors border-2 border-[#3a5c3a] bg-[#3a5c3a] text-white hover:bg-[#2d4630] hover:border-[#2d4630]"
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
+            View Projects
+          </a>
           <a href="#about" className="px-6 py-2 rounded border border-accent-blue text-accent-blue font-semibold hover:bg-accent-blue/10 transition-colors">My Journey</a>
         </motion.div>
       </div>
