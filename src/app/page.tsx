@@ -2,8 +2,7 @@
 import HeroSection from "../components/HeroSection";
 import LeafyTree from "./LeafyTree";
 import FlockOfBirds from "./FlockOfBirds";
-import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 export default function Home() {
   return (
@@ -70,27 +69,7 @@ export default function Home() {
 
 }
 
-// Tall bamboo tree SVG (left side)
-function BambooTree(props: any) {
-  // Accepts style but ignores it for the main tree, for backward compatibility
-  return (
-    <svg className="absolute left-0 bottom-0 h-[70vh] w-32 z-20 select-none drop-shadow-[0_2px_8px_rgba(255,255,255,0.12)]" viewBox="0 0 64 480" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      {/* Bamboo stalk */}
-      <rect x="28" y="40" width="8" height="400" rx="4" fill="#3a5c3a" />
-      {/* Bamboo nodes */}
-      <rect x="26" y="80" width="12" height="8" rx="4" fill="#4e7c4e" />
-      <rect x="26" y="160" width="12" height="8" rx="4" fill="#4e7c4e" />
-      <rect x="26" y="240" width="12" height="8" rx="4" fill="#4e7c4e" />
-      <rect x="26" y="320" width="12" height="8" rx="4" fill="#4e7c4e" />
-      <rect x="26" y="400" width="12" height="8" rx="4" fill="#4e7c4e" />
-      {/* Leaves */}
-      <path d="M32 60 Q10 40 28 80" stroke="#5fae5f" strokeWidth="3" fill="none" />
-      <path d="M32 120 Q0 100 28 140" stroke="#5fae5f" strokeWidth="3" fill="none" />
-      <path d="M36 200 Q60 180 36 240" stroke="#5fae5f" strokeWidth="3" fill="none" />
-      <path d="M36 280 Q64 260 36 320" stroke="#5fae5f" strokeWidth="3" fill="none" />
-    </svg>
-  );
-}
+
 
 // NeuronFireflies component
 function NeuronFireflies() {
@@ -236,30 +215,4 @@ function GardenSilhouettes() {
 }
 
 // Flowing river (animated SVG path, full width, sits above the garden)
-function FlowingRiver() {
-  const riverRef = useRef<SVGPathElement>(null);
-  useEffect(() => {
-    let t = 0;
-    let frame: number;
-    function animate() {
-      t += 0.009;
-      const amplitude = 16;
-      const baseY = 170;
-      let d = `M0,${baseY}`;
-      for (let x = 0; x <= 1920; x += 40) {
-        const y = baseY + Math.sin(t + x / 120) * amplitude;
-        d += ` Q${x + 20},${y + Math.cos(t + x / 80) * amplitude * 0.5} ${x + 40},${y}`;
-      }
-      if (riverRef.current) riverRef.current.setAttribute('d', d);
-      frame = requestAnimationFrame(animate);
-    }
-    animate();
-    return () => cancelAnimationFrame(frame);
-  }, []);
-  return (
-    <svg className="absolute bottom-0 left-0 w-full h-[22vh] min-h-40 z-20 select-none pointer-events-none" viewBox="0 0 1920 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path ref={riverRef} d="M0,170 Q40,170 80,170 ... 1920,170" stroke="#4e7ca1" strokeWidth="18" fill="none" opacity="0.7" />
-      <path ref={riverRef} d="M0,190 Q40,190 80,190 ... 1920,190" stroke="#7ba7c9" strokeWidth="10" fill="none" opacity="0.4" />
-    </svg>
-  );
-}
+// FlowingRiver component removed (was unused)
