@@ -34,7 +34,7 @@ const projects = [
   },
 ];
 
-type Project = typeof projects[number];
+// type Project = typeof projects[number];
 
 const cardVariants = {
   initial: { y: 0, boxShadow: "0 4px 24px 0 rgba(60, 120, 80, 0.10)", scale: 1 },

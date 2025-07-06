@@ -12,7 +12,7 @@ export default function FlockOfBirds() {
     // Birds start offscreen, fly in V, then circle, then land
     // Half birds land on trees, half on garden
     // 4 birds will land on leafy trees, 6 in the garden
-    let birds = Array.from({ length: 10 }).map((_, i) => {
+    const birds = Array.from({ length: 10 }).map((_, i) => {
       const onTree = i < 4;
       // LeafyTree landing spots (match LeafyTree positions in page.tsx)
       const leafyTreeSpots = [
@@ -30,7 +30,7 @@ export default function FlockOfBirds() {
         { x: 650, y: 350 },
         { x: 700, y: 355 },
       ];
-      let nestX, nestY;
+        let nestX, nestY;
       if (onTree) {
         nestX = leafyTreeSpots[i].x + Math.random() * 10;
         nestY = leafyTreeSpots[i].y + Math.random() * 8;
@@ -61,7 +61,7 @@ export default function FlockOfBirds() {
       };
     });
     let animId: number;
-    function animate() {
+    const animate = () => {
       frame++;
       birds.forEach((bird, i) => {
         if (!bird.landed) {
@@ -106,13 +106,13 @@ export default function FlockOfBirds() {
       });
       // Draw
       if (svg) {
-        let birdsEls = svg.querySelectorAll('.bird');
+        const birdsEls = svg.querySelectorAll('.bird');
         birds.forEach((bird, i) => {
-          let el = birdsEls[i] as SVGPathElement;
+          const el = birdsEls[i] as SVGPathElement;
           if (el) {
             // Simulate wing flaps by morphing the path
-            let flap = bird.wingFlap;
-            let path = `M0 0 Q 8 ${-8 + flap} 16 0 Q 8 ${-4 + flap / 2} 0 0`;
+            const flap = bird.wingFlap;
+            const path = `M0 0 Q 8 ${-8 + flap} 16 0 Q 8 ${-4 + flap / 2} 0 0`;
             el.setAttribute('d', path);
             el.setAttribute('transform', `translate(${bird.x},${bird.y}) scale(${bird.landed ? 1.18 : 1})`);
             el.setAttribute('opacity', bird.landed ? '1' : '0.88');
